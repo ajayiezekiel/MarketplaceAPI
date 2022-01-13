@@ -9,6 +9,9 @@ import productRoute from './routes/products';
 // Import db connection file
 import connectDB from './config/db';
 
+// Import error handler
+import errorHandler from './middleware/error';
+
 const app: Application = express();
 
 // Load env vars
@@ -18,7 +21,6 @@ dotenv.config({
 
 // Connect to Database
 connectDB();
-
 
 // Body parser
 app.use(express.json());
@@ -32,6 +34,8 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/products', productRoute);
 
 const PORT = process.env.PORT || 5000;
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT ${PORT}`);
