@@ -8,13 +8,39 @@ import asyncHandler from '../middleware/async';
 // @route   GET /api/v1/products
 // @access  Public
 const getProducts = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-    const query: {} = req.query;
-    const products = await Product.find(query);
+    let query;
+
+    // Copy req.query
+    const reqQuery = { ...req.query }
+
+    // Fields to exclude
+    const removedLists: string[] = ['limit', 'select', 'sort', 'page']   
+
+    // Loop over removeFields and delete them from reqQuery
+    removedLists.forEach(param => delete reqQuery[param]);
+
+    // Create query string
+    let queryStr = JSON.stringify(reqQuery);
+
+    // Create operators 
+    queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+    console.log(queryStr)
+    // Finding Resource
+    query = Product.find(JSON.parse(queryStr));
+
+    // Select Fields
+    if(req.query.select){
+        const fields = (req.query.select as string).split(',').join(' ');
+        query = query.select(fields);
+    }
+
+    // Executing query
+    const results = await query;
 
     res.status(200).json({
         success: true,
-        count: products.length,
-        data: products
+        count: results.length,
+        data: results
     });
 });
 
