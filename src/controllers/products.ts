@@ -1,108 +1,89 @@
 import { Request, Response, NextFunction } from 'express';
 import Product from '../models/Product';
+import ErrorResponse from '../utils/errorResponse';
+import asyncHandler from '../middleware/async';
 
 
 // @desc    Get all products
 // @route   GET /api/v1/products
 // @access  Public
-const getProducts = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const products = await Product.find();
+const getProducts = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    const query: {} = req.query;
+    const products = await Product.find(query);
 
-        res.status(200).json({
-            success: true,
-            data: products
-        });
-    } catch(err) {
-        console.log(err);
-    }
-};
+    res.status(200).json({
+        success: true,
+        count: products.length,
+        data: products
+    });
+});
 
 // @desc    Get single products
 // @route   GET /api/v1/products/:id
 // @access  Public
-const getProduct = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const product = await Product.findById(req.params.id);
+const getProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    const product = await Product.findById(req.params.id);
 
-        if(!product) {
-            return next();
-        }
-
-        res.status(200).json({
-            success: true,
-            data: product
-        });
-    } catch(err) {
-       // res.status(400).json({ success: false });
-       next(err)
+    if(!product) {
+        return next(new ErrorResponse(`Product with the id ${req.params.id} not found`, 404));
     }
-};
+
+    res.status(200).json({
+        success: true,
+        data: product
+    });
+});
 
 // @desc    Create product
 // @route   POST /api/v1/products
 // @access  Private
-const addProduct = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const product = await Product.create(req.body);
+const addProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    const product = await Product.create(req.body);
 
-        res.status(201).json({
-            success: true,
-            data: product
-        });
-    } catch(err) {
-        console.log(err);
-    } 
-};
+    res.status(201).json({
+        success: true,
+        data: product
+    }); 
+});
 
 // @desc    Update product
 // @route   PUT /api/v1/products/:id
 // @access  Private
-const updateProduct = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        let product = await Product.findById(req.params.id);
+const updateProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    let product = await Product.findById(req.params.id);
 
-        if(!product) {
-            return next();
-        }
-
-        product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
-
-        res.status(200).json({
-            success: true,
-            data: product
-        });
-
-    } catch(err) {
-        console.log(err);
+    if(!product) {
+        return next(new ErrorResponse(`Product with the id ${req.params.id} not found`, 404));
     }
-    
-};
+
+    product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
+    res.status(200).json({
+        success: true,
+        data: product
+    });  
+});
 
 // @desc    Delete product
 // @route   DELETE /api/v1/products/:id
 // @access  Private
-const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const product = await Product.findById(req.params.id);
+const deleteProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    const product = await Product.findById(req.params.id);
 
-        if(!product) {
-            return next();
-        }
-
-        product.remove();
-
-        res.status(200).json({
-            success: true,
-            data: {}
-        });
-    } catch(err) {
-        console.log(err)
+    if(!product) {
+        return next(new ErrorResponse(`Product with the id ${req.params.id}`, 404));
     }
-};
+
+    product.remove();
+
+    res.status(200).json({
+        success: true,
+        data: {}
+    });
+});
 
 
 export {
