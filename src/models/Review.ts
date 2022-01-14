@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 interface Review {
-    description: string,
+    text: string,
     rating: number,
     // product: mongoose.Types.ObjectId,
     // user: mongoose.Types.ObjectId,
@@ -11,7 +11,7 @@ interface Review {
 
 
 const ReviewSchema = new mongoose.Schema<Review>({
-    description: {
+    text: {
         type: String,
         required: [true, 'Please add a review for the product'],
         maxlength: [500, 'You cannot write more than 500 words']
