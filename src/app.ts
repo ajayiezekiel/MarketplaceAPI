@@ -5,6 +5,7 @@ import colors from 'colors';
 
 // Route files
 import productRoute from './routes/products';
+import authRoute from './routes/auth';
 
 // Import db connection file
 import connectDB from './config/db';
@@ -32,6 +33,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/v1/products', productRoute);
+app.use('/api/v1/auth', authRoute);
 
 const PORT = process.env.PORT || 5000;
 
