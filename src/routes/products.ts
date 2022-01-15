@@ -6,6 +6,7 @@ import {
     updateProduct,
     deleteProduct
 } from '../controllers/products'
+import { protect } from '../middleware/auth';
 
 const router: Router = express.Router();
 
@@ -13,12 +14,12 @@ const router: Router = express.Router();
 router
   .route('/')
   .get(getProducts)
-  .post(addProduct);
+  .post(protect, addProduct);
 
 router
   .route('/:id')
   .get(getProduct)
-  .put(updateProduct)
-  .delete(deleteProduct);
+  .put(protect, updateProduct)
+  .delete(protect, deleteProduct);
 
-  export default router;
+export default router;
