@@ -1,16 +1,20 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 interface User {
-    name: string,
-    email: string,
-    password: string,
-    role: string,
-    phoneNumber: string,
-    resetPasswordToken?: string,
-    resetPasswordExpire?: Date,
-    createdAt: Date,
-    updatedAt: Date
+    _id: string;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+    phoneNumber: string;
+    resetPasswordToken?: string;
+    resetPasswordExpire?: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    getSignedJwtToken(): string;
+    matchPassword(password: string): Promise<boolean>;
 }
 
 
@@ -58,5 +62,17 @@ UserSchema.pre('save', async function(next) {
 
     this.password = await bcrypt.hash(this.password, salt);
 });
+
+// Sign JWT  and return
+UserSchema.methods.getSignedJwtToken = function() {
+    return jwt.sign({ id: this._id}, `${process.env.JWT_SECRET}`,{
+        expiresIn: `${process.env.JWT_EXPIRE}`
+    })
+};
+
+// Sign JWT  and return
+UserSchema.methods.matchPassword = async function(currentPassword: string):Promise<boolean> {
+    return await bcrypt.compare(currentPassword, this.password);
+};
 
 export default mongoose.model<User>('User', UserSchema);
