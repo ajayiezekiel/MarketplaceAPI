@@ -6,7 +6,12 @@ import asyncHandler from '../middleware/async';
 interface paginationInt {
     page: number,
     limit: number
-}
+};
+
+interface customRequest extends Request {
+    user?: any
+};
+
 
 
 // @desc    Get all products
@@ -48,7 +53,7 @@ const getProducts = asyncHandler(async (req: Request, res: Response, next: NextF
 
     // Pagination
     const page = parseInt((req.query.page as string), 10) || 1;
-    const limit = parseInt((req.query.limit as string), 10) || 1;
+    const limit = parseInt((req.query.limit as string), 10) || 10;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const total = await Product.countDocuments();
@@ -83,7 +88,7 @@ const getProducts = asyncHandler(async (req: Request, res: Response, next: NextF
     });
 });
 
-// @desc    Get single products
+// @desc    Get single product
 // @route   GET /api/v1/products/:id
 // @access  Public
 const getProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
@@ -102,7 +107,8 @@ const getProduct = asyncHandler(async (req: Request, res: Response, next: NextFu
 // @desc    Create product
 // @route   POST /api/v1/products
 // @access  Private
-const addProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+const addProduct = asyncHandler(async (req: customRequest, res: Response, next: NextFunction) => {
+    req.body.user = req.user.id
     const product = await Product.create(req.body);
 
     res.status(201).json({
