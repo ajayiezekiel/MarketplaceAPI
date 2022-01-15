@@ -3,6 +3,11 @@ import Product from '../models/Product';
 import ErrorResponse from '../utils/errorResponse';
 import asyncHandler from '../middleware/async';
 
+interface paginationInt {
+    page: number,
+    limit: number
+}
+
 
 // @desc    Get all products
 // @route   GET /api/v1/products
@@ -23,8 +28,8 @@ const getProducts = asyncHandler(async (req: Request, res: Response, next: NextF
     let queryStr = JSON.stringify(reqQuery);
 
     // Create operators 
-    queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
-    console.log(queryStr)
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+
     // Finding Resource
     query = Product.find(JSON.parse(queryStr));
 
@@ -34,12 +39,46 @@ const getProducts = asyncHandler(async (req: Request, res: Response, next: NextF
         query = query.select(fields);
     }
 
+    if (req.query.sort) {
+        const fields = (req.query.sort as string).split(',').join(' ');
+        query = query.sort(fields);
+    } else {
+        query = query.sort('-createdAt');
+    }
+
+    // Pagination
+    const page = parseInt((req.query.page as string), 10) || 1;
+    const limit = parseInt((req.query.limit as string), 10) || 1;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const total = await Product.countDocuments();
+
+    query = query.skip(startIndex).limit(limit);
+
     // Executing query
     const results = await query;
+
+    const pagination: {next?: paginationInt, prev?: paginationInt} = {};
+
+    if(endIndex < total) {
+        pagination.next = {
+            page: page + 1,
+            limit
+        }
+    }
+
+    if(startIndex > 0) {
+        pagination.prev = {
+            page: page - 1,
+            limit
+        }
+    }
+    
 
     res.status(200).json({
         success: true,
         count: results.length,
+        pagination,
         data: results
     });
 });
