@@ -10,7 +10,7 @@ interface Product {
     countInStock: number,
     numReviews?: number,
     photo?: string,
-    // user: mongoose.Types.ObjectId,
+    user: mongoose.Types.ObjectId,
     createdAt: Date,
     updatedAt: Date
 }
@@ -59,12 +59,12 @@ const ProductSchema = new mongoose.Schema<Product>({
     photo: {
         type: String,
         default: 'no-photo.jpg'
-    }
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true
-    // },
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
 }, {
     timestamps: true
 });
