@@ -7,13 +7,15 @@ import {
     deleteProduct
 } from '../controllers/products'
 import { protect } from '../middleware/auth';
+import Product from '../models/Product';
+import abstractedResults from '../middleware/abstractedResults';
 
 const router: Router = express.Router();
 
 
 router
   .route('/')
-  .get(getProducts)
+  .get(abstractedResults(Product),getProducts)
   .post(protect, addProduct);
 
 router
