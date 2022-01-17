@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import Review from '../models/Review';
 import ErrorResponse from '../utils/errorResponse';
 import asyncHandler from '../middleware/async';
+import Product from '../models/Product';
 
 interface PaginationInt {
     page: number;
@@ -27,17 +28,32 @@ interface CustomRequest extends Request {
 
 // @desc    Get all reviews
 // @route   GET /api/v1/reviews
-// @route   GET /api/v1/:productId/reviews
+// @route   GET /api/v1/products/:productId/reviews
 // @access  Public
 const getReviews = asyncHandler(async (req: Request, res: customResponse, next: NextFunction) => {
-    res.status(200).json(res.abstractedResults)
+    if (req.params.productId) {
+        const reviews = await Review.find({
+            product: req.params.productId
+        });
+
+        return res.status(200).json({
+            success: true,
+            count: reviews.length,
+            data: reviews
+        });
+    } else {
+        res.status(200).json(res.abstractedResults)
+    }
 });
 
 // @desc    Get single review
 // @route   GET /api/v1/reviews/:id
 // @access  Public
 const getReview = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-    const review = await Review.findById(req.params.id);
+    const review = await Review.findById(req.params.id).populate({
+        path: 'product',
+        select: 'name description'
+    })
 
     if(!review) {
         return next(new ErrorResponse(`Product with the id ${req.params.id} not found`, 404));
@@ -54,7 +70,15 @@ const getReview = asyncHandler(async (req: Request, res: Response, next: NextFun
 // @route   POST /api/v1/:productId/reviews
 // @access  Private
 const addReview = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
-    req.body.user = req.user.id
+    req.body.user = req.user.id;
+    req.body.product = req.params.productId;
+
+    const product = Product.findById(req.params.productId);
+
+    if(!product) {
+        return next(new ErrorResponse(`No product found with id ${req.params.productId}`, 404));
+    }
+
     const review = await Review.create(req.body);
 
     res.status(201).json({
