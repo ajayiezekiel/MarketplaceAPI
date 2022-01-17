@@ -17,7 +17,7 @@ interface customResponse extends Response {
     abstractedResults?: AbstractedRes
 };
 
-const abstractedResults = (model: any, populate?: string) => async (req: Request, res: customResponse, next: NextFunction) => {
+const abstractedResults = (model: any, populate?: string | { path: string, select: string }) => async (req: Request, res: customResponse, next: NextFunction) => {
     let query;
 
     // Copy req.query
