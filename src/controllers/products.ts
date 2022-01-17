@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import Product from '../models/Product';
 import ErrorResponse from '../utils/errorResponse';
 import asyncHandler from '../middleware/async';
-
+ 
 interface PaginationInt {
     page: number;
     limit: number;
@@ -21,7 +21,7 @@ interface customResponse extends Response {
 
 interface CustomRequest extends Request {
     user?: any
-}
+};
 
 
 
