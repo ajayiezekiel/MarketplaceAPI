@@ -8,14 +8,18 @@ import {
 } from '../controllers/products'
 import { protect } from '../middleware/auth';
 import Product from '../models/Product';
+import reviewRouter from './reviews';
 import abstractedResults from '../middleware/abstractedResults';
 
 const router: Router = express.Router();
 
+// Reroute into other resource routers
+router.use('/:productId/reviews', reviewRouter);
+
 
 router
   .route('/')
-  .get(abstractedResults(Product),getProducts)
+  .get(abstractedResults(Product, 'reviews'),getProducts)
   .post(protect, addProduct);
 
 router
