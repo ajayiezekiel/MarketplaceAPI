@@ -1,8 +1,10 @@
+import { timeStamp } from 'console';
 import mongoose from 'mongoose';
+import slugify from 'slugify';
  
 interface Product {
     name: string,
-    slug?: string,
+    slug: string,
     description: string,
     brand?: string,
     category: string,
@@ -65,9 +67,33 @@ const ProductSchema = new mongoose.Schema<Product>({
         ref: 'User',
         required: true
     },
-}, {
-    timestamps: true
+}, 
+{
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 });
+
+// Create Product slug from the name
+ProductSchema.pre('save', function(next) {
+    this.slug = slugify(this.name, { lower: true });
+    next();
+});
+
+// Cascade delete courses when a product is deleted
+ProductSchema.pre('remove', async function(next) {
+    console.log(`Reviews being removed from product ${this._id}`);
+    await this.model('Review').deleteMany({ product: this._id });
+    next();
+});
+
+// Reverse populate with virtuals
+ProductSchema.virtual('reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'product',
+    justOne: false
+})
 
 
 
