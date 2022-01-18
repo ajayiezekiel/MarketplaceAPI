@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 interface User {
-    _id: string;
     name: string;
     email: string;
     password: string;
