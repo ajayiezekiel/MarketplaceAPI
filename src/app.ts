@@ -7,6 +7,8 @@ import colors from 'colors';
 import productRoute from './routes/products';
 import authRoute from './routes/auth';
 import reviewRoute from './routes/reviews';
+import userRoute from './routes/reviews';
+
 
 // Import db connection file
 import connectDB from './config/db';
@@ -36,6 +38,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/products', productRoute);
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/reviews', reviewRoute);
+app.use('/api/v1/users', userRoute);
 
 
 const PORT = process.env.PORT || 5000;
