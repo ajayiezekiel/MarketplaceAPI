@@ -90,11 +90,16 @@ const addReview = asyncHandler(async (req: CustomRequest, res: Response, next: N
 // @desc    Update review for a product
 // @route   PUT /api/v1/reviews/:id
 // @access  Private
-const updateReview = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+const updateReview = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
     let review = await Review.findById(req.params.id);
 
     if(!review) {
         return next(new ErrorResponse(`Product with the id ${req.params.id} not found`, 404));
+    }
+
+    // Check if the user is the reviewer
+    if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${req.user.id} is not authorized to update this review`, 401));
     }
 
     review = await Review.findByIdAndUpdate(req.params.id, req.body, {
@@ -111,11 +116,16 @@ const updateReview = asyncHandler(async (req: Request, res: Response, next: Next
 // @desc    Delete review for a product
 // @route   DELETE /api/v1/products/:id
 // @access  Private
-const deleteReview = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+const deleteReview = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
     const review = await Review.findById(req.params.id);
 
     if(!review) {
         return next(new ErrorResponse(`Product with the id ${req.params.id}`, 404));
+    }
+
+    // Check if the user is reviewer
+    if (review.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${req.user.id} is not authorized to delete this review`, 401));
     }
 
     review.remove();
