@@ -6,7 +6,7 @@ import {
     updateProduct,
     deleteProduct
 } from '../controllers/products'
-import { protect } from '../middleware/auth';
+import { authorize, protect } from '../middleware/auth';
 import Product from '../models/Product';
 import reviewRouter from './reviews';
 import abstractedResults from '../middleware/abstractedResults';
@@ -20,12 +20,12 @@ router.use('/:productId/reviews', reviewRouter);
 router
   .route('/')
   .get(abstractedResults(Product, 'reviews'),getProducts)
-  .post(protect, addProduct);
+  .post(protect, authorize('admin', 'vendor'), addProduct);
 
 router
   .route('/:id')
   .get(getProduct)
-  .put(protect, updateProduct)
-  .delete(protect, deleteProduct);
+  .put(protect, authorize('admin', 'vendor'),updateProduct)
+  .delete(protect, authorize('admin', 'vendor'), deleteProduct);
 
 export default router;
