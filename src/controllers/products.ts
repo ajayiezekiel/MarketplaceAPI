@@ -52,7 +52,9 @@ const getProduct = asyncHandler(async (req: Request, res: Response, next: NextFu
 // @route   POST /api/v1/products
 // @access  Private
 const addProduct = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
+    // Add user to request body
     req.body.user = req.user.id
+
     const product = await Product.create(req.body);
 
     res.status(201).json({
@@ -64,11 +66,16 @@ const addProduct = asyncHandler(async (req: CustomRequest, res: Response, next: 
 // @desc    Update product
 // @route   PUT /api/v1/products/:id
 // @access  Private
-const updateProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+const updateProduct = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
     let product = await Product.findById(req.params.id);
 
     if(!product) {
         return next(new ErrorResponse(`Product with the id ${req.params.id} not found`, 404));
+    }
+
+    // Check if the vendor is product owner
+    if (product.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${req.user.id} is not authorized to update this product`, 401));
     }
 
     product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -85,11 +92,16 @@ const updateProduct = asyncHandler(async (req: Request, res: Response, next: Nex
 // @desc    Delete product
 // @route   DELETE /api/v1/products/:id
 // @access  Private
-const deleteProduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+const deleteProduct = asyncHandler(async (req: CustomRequest, res: Response, next: NextFunction) => {
     const product = await Product.findById(req.params.id);
 
     if(!product) {
-        return next(new ErrorResponse(`Product with the id ${req.params.id}`, 404));
+        return next(new ErrorResponse(`Product with the id ${req.params.id} not found`, 404));
+    }
+
+    // Check if the vendor is product owner
+    if (product.user.toString() !== req.user.id && req.user.role !== 'admin') {
+        return next(new ErrorResponse(`User ${req.user.id} is not authorized to delete this product`, 401));
     }
 
     product.remove();
