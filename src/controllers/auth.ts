@@ -15,6 +15,7 @@ interface UserInterface {
     updatedAt: Date;
     getSignedJwtToken(): string;
     matchPassword(password: string): Promise<boolean>;
+    save(): void;
 };
 
 interface customRequest extends Request {
@@ -59,6 +60,7 @@ const login = asyncHandler(async (req: Request, res: Response, next: NextFunctio
         return next(new ErrorResponse('Invalid credentials', 401));
     }
 
+
     // Check if password matches
     const isMatch = await user.matchPassword(password);
 
@@ -81,6 +83,46 @@ const getMe = asyncHandler(async (req: customRequest, res: Response, next: NextF
     });
 });
 
+// @desc    Update user details
+// @route   PUT /api/v1/auth/updatedetails
+// @access  Private
+const updateDetails = asyncHandler(async (req: customRequest, res: Response, next: NextFunction) => {
+    // Restricted the fields that can be updated
+    const fieldsToUpdate = {
+        name: req.body.name,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber
+    }
+
+    const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
+        new: true,
+        runValidators: true
+    });
+
+    res.status(200).json({
+        success: true,
+        data: user
+    });
+});
+
+// @desc    Update user password
+// @route   PUT /api/v1/auth/updatepassword
+// @access  Private
+const updatePassword = asyncHandler(async (req: customRequest, res: Response, next: NextFunction) => {
+    let user = await User.findById(req.user.id).select('+password');
+
+    // Check current password
+    if(!(await (user as UserInterface).matchPassword(req.body.currentPassword))) {
+        return next(new ErrorResponse('Password is incorrect', 401));
+    }
+
+    (user as UserInterface).password = req.body.newPassword;
+
+    await (user as UserInterface).save();
+
+    sendTokenResponse(user as UserInterface, 200, res)
+});
+
 // Get token from model and send response
 const sendTokenResponse = (user: UserInterface, statusCode: number, res: Response) => {
     const token = user.getSignedJwtToken();
@@ -95,7 +137,9 @@ const sendTokenResponse = (user: UserInterface, statusCode: number, res: Respons
 export {
     register,
     login,
-    getMe
+    getMe,
+    updateDetails,
+    updatePassword
 };
 
 
