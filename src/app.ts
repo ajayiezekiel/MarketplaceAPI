@@ -1,13 +1,20 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
+import path from 'path';
+import express, { Application } from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import rateLimit from 'express-rate-limit';
+import cors from 'cors';
+import hpp from 'hpp';
 import colors from 'colors';
+
 
 // Route files
 import productRoute from './routes/products';
 import authRoute from './routes/auth';
 import reviewRoute from './routes/reviews';
-import userRoute from './routes/reviews';
+import userRoute from './routes/users';
 
 
 // Import db connection file
@@ -15,6 +22,7 @@ import connectDB from './config/db';
 
 // Import error handler
 import errorHandler from './middleware/error';
+
 
 const app: Application = express();
 
@@ -28,6 +36,29 @@ connectDB();
 
 // Body parser
 app.use(express.json());
+
+// Sanitize data
+app.use(mongoSanitize());
+
+// Set security headers
+app.use(helmet());
+
+// Rate limiting
+const limiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 100
+});
+app.use(limiter);
+
+// Prevent http param pollution
+app.use(hpp());
+
+// Enable cors
+app.use(cors());
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
