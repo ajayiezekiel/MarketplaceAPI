@@ -1,1 +1,2 @@
-web: node src/app.ts
+web: npm run build
+web: npm start
