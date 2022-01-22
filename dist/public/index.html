@@ -1,116 +1,859 @@
 <!doctype html><html lang=en><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="./css/index.css">
 <title>Marketplace API</title>
-<div class=container-fluid><div class=row><div class="col-md-12 collection-intro"><h3>Marketplace API</h3><p></div><div class=col-md-12><div class=col-md-3><ul><li><strong><a href=#Authentication>Authentication</a></strong><ul><li><a class=endpoint_menu href=#jump-Authentication-Getloggedinuserviatoken>Get logged in user via token</a><li><a class=endpoint_menu href=#jump-Authentication-LoginUser>Login User</a><li><a class=endpoint_menu href=#jump-Authentication-Registeruser>Register user</a><li><a class=endpoint_menu href=#jump-Authentication-Updateuserdetails>Update user details</a><li><a class=endpoint_menu href=#jump-Authentication-Updateuserpassword>Update user password</a></ul><li><strong><a href=#Product>Product</a></strong><ul><li><a class=endpoint_menu href=#jump-Product-CreateProduct>Create Product</a><li><a class=endpoint_menu href=#jump-Product-Deleteproduct>Delete product</a><li><a class=endpoint_menu href=#jump-Product-Getallproducts>Get all products</a><li><a class=endpoint_menu href=#jump-Product-Getproduct>Get product</a><li><a class=endpoint_menu href=#jump-Product-Updateproduct>Update product</a></ul><li><strong><a href=#Review>Review</a></strong><ul><li><a class=endpoint_menu href=#jump-Review-Addreviewforaproduct>Add review for a product</a><li><a class=endpoint_menu href=#jump-Review-Deletereview>Delete review</a><li><a class=endpoint_menu href=#jump-Review-Getallreviews>Get all reviews</a><li><a class=endpoint_menu href=#jump-Review-Getreviewsforaproduct>Get reviews for a product</a><li><a class=endpoint_menu href=#jump-Review-Getsinglereview>Get single review</a><li><a class=endpoint_menu href=#jump-Review-Updatereview>Update review</a></ul><li><strong><a href=#User>User</a></strong><ul><li><a class=endpoint_menu href=#jump-User-Deleteuser>Delete user</a><li><a class=endpoint_menu href=#jump-User-Getallusers>Get all users</a><li><a class=endpoint_menu href=#jump-User-Getsingleuser>Get single user</a><li><a class=endpoint_menu href=#jump-User-Updateuser>Update user</a></ul></ul></div><div class=col-md-9><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Authentication>Authentication
+<div class=container-fluid><div class=row><div class="col-md-12 collection-intro"><h3>Marketplace API</h3><p></div><div class=col-md-12><div class=col-md-3><ul><li><strong><a href=#Authentication>Authentication</a></strong><ul><li><a class=endpoint_menu href=#jump-Authentication-Getloggedinuserviatoken>Get logged in user via token</a><li><a class=endpoint_menu href=#jump-Authentication-LoginUser>Login User</a><li><a class=endpoint_menu href=#jump-Authentication-Registeruser>Register user</a><li><a class=endpoint_menu href=#jump-Authentication-Updateuserdetails>Update user details</a><li><a class=endpoint_menu href=#jump-Authentication-Updateuserpassword>Update user password</a></ul><li><strong><a href=#Product>Product</a></strong><ul><li><a class=endpoint_menu href=#jump-Product-CreateProduct>Create Product</a><li><a class=endpoint_menu href=#jump-Product-Deleteproduct>Delete product</a><li><a class=endpoint_menu href=#jump-Product-Getallproducts>Get all products</a><li><a class=endpoint_menu href=#jump-Product-Getallproductswithqueryparameters>Get all products with query parameters</a><li><a class=endpoint_menu href=#jump-Product-Getproduct>Get product</a><li><a class=endpoint_menu href=#jump-Product-Updateproduct>Update product</a></ul><li><strong><a href=#Review>Review</a></strong><ul><li><a class=endpoint_menu href=#jump-Review-Addreviewforaproduct>Add review for a product</a><li><a class=endpoint_menu href=#jump-Review-Deletereview>Delete review</a><li><a class=endpoint_menu href=#jump-Review-Getallreviews>Get all reviews</a><li><a class=endpoint_menu href=#jump-Review-Getreviewsforaproduct>Get reviews for a product</a><li><a class=endpoint_menu href=#jump-Review-Getsinglereview>Get single review</a><li><a class=endpoint_menu href=#jump-Review-Updatereview>Update review</a></ul><li><strong><a href=#User>User</a></strong><ul><li><a class=endpoint_menu href=#jump-User-Deleteuser>Delete user</a><li><a class=endpoint_menu href=#jump-User-Getallusers>Get all users</a><li><a class=endpoint_menu href=#jump-User-Getsingleuser>Get single user</a><li><a class=endpoint_menu href=#jump-User-Updateuser>Update user</a></ul></ul></div><div class=col-md-9><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Authentication>Authentication
 <span class=badge>5</span></h3></div><div class=panel-body><p><p>Folder for signup, login, logout<div class=request-item><div class=panel-group id=accordion-Authentication><div class="panel panel-info" id=jump-Authentication-Getloggedinuserviatoken><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Getloggedinuserviatoken><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get logged in user via token</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/auth/me</h4></a></div><div id=collapse-Authentication-Getloggedinuserviatoken class="panel-collapse collapse"><div class=panel-body></div></div></div><div class="panel panel-success" id=jump-Authentication-LoginUser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+{{URL}}/api/v1/auth/me</h4></a></div><div id=collapse-Authentication-Getloggedinuserviatoken class="panel-collapse collapse"><div class=panel-body><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Getloggedinuserviatoken_0_Getloggedinuserviatoken>Get logged in user via token</select><br><section id=req_res_Authentication_Getloggedinuserviatoken_0_Getloggedinuserviatoken style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/me</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;name&#34;: &#34;Cole Mike&#34;,
+&#34;email&#34;: &#34;cole@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:58:52.430Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:58:52.430Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-success" id=jump-Authentication-LoginUser><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-LoginUser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Login User</strong> &nbsp;|&nbsp;
 <strong class="request-method border-success">POST</strong>
 &nbsp;
 {{URL}}/api/v1/auth/login</h4></a></div><div id=collapse-Authentication-LoginUser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Log in user with the right login credentials</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;email&#34;: &#34;john@gmail.com&#34;,
-&#34;password&#34;: &#34;abcdefgh&#34;
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-success" id=jump-Authentication-Registeruser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+&#34;email&#34;: &#34;mary@gmail.com&#34;,
+&#34;password&#34;: &#34;12345678&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_LoginUser_0_LoginUser>Login User</select><br><section id=req_res_Authentication_LoginUser_0_LoginUser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/login</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;email&#34;: &#34;mary@gmail.com&#34;,
+&#34;password&#34;: &#34;12345678&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTcxZDQzMzlkOGQ3ZmFmM2MxZTkyZCIsImlhdCI6MTY0Mjg2MDc1NCwiZXhwIjoxNjQzNzI0NzU0fQ.t78BTK9e2yP9Jk3ge4ksi37o9bYZuPnqhFBJFWNiZqg&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-success" id=jump-Authentication-Registeruser><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-success data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Registeruser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Register user</strong> &nbsp;|&nbsp;
 <strong class="request-method border-success">POST</strong>
 &nbsp;
-{{URL}}/api/v1/auth/register</h4></a></div><div id=collapse-Authentication-Registeruser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;name&#34;: &#34;John Doe&#34;,
-&#34;email&#34;: &#34;john@gmail.com&#34;,
-&#34;role&#34;: &#34;vendor&#34;,
+{{URL}}/api/v1/auth/register</h4></a></div><div id=collapse-Authentication-Registeruser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Create an account as either a vendor or as a user (buyer)</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Cole Mike&#34;,
+&#34;email&#34;: &#34;cole@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
 &#34;password&#34;: &#34;12345678&#34;
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-warning" id=jump-Authentication-Updateuserdetails><div class=panel-heading><small class="pull-right text-muted">raw</small>
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Registeruser_0_Registeruser>Register user</select><br><section id=req_res_Authentication_Registeruser_0_Registeruser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/register</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Cole Mike&#34;,
+&#34;email&#34;: &#34;cole@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;password&#34;: &#34;12345678&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWMwZDljYTFjODViYjliZDM5NWQxZCIsImlhdCI6MTY0Mjg1OTkzMiwiZXhwIjoxNjQzNzIzOTMyfQ.9SHCMe5VAGtbsKe4CS1C0QzehjD1XjUTaeUuWVvungo&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-warning" id=jump-Authentication-Updateuserdetails><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Updateuserdetails><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user details</strong> &nbsp;|&nbsp;
 <strong class="request-method border-warning">PUT</strong>
 &nbsp;
 {{URL}}/api/v1/auth/updatedetails</h4></a></div><div id=collapse-Authentication-Updateuserdetails class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>User profile update (name, email and phoneNumber) in the database</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;name&#34;: &#34;Mary Shaw&#34;
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-warning" id=jump-Authentication-Updateuserpassword><div class=panel-heading><small class="pull-right text-muted">raw</small>
+&#34;name&#34;: &#34;David Doe&#34;,
+&#34;email&#34;: &#34;david@gmail.com&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Updateuserdetails_0_Updateuserdetails>Update user details</select><br><section id=req_res_Authentication_Updateuserdetails_0_Updateuserdetails style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/updatedetails</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;David Doe&#34;,
+&#34;email&#34;: &#34;david@gmail.com&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;name&#34;: &#34;David Doe&#34;,
+&#34;email&#34;: &#34;david@gmail.com&#34;,
+&#34;role&#34;: &#34;vendor&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:29:35.639Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T11:44:56.227Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Authentication-Updateuserpassword><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-warning data-toggle=collapse data-parent=#accordion-Authentication href=#collapse-Authentication-Updateuserpassword><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user password</strong> &nbsp;|&nbsp;
 <strong class="request-method border-warning">PUT</strong>
 &nbsp;
 {{URL}}/api/v1/auth/updatepassword</h4></a></div><div id=collapse-Authentication-Updateuserpassword class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update user password in the database.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
 &#34;currentPassword&#34;: &#34;12345678&#34;,
-&#34;newPassword&#34;: &#34;abcdefgh&#34;
-}</span><div class=clearfix></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Product>Product
-<span class=badge>5</span></h3></div><div class=panel-body><p><p>Folder for all product APs<div class=request-item><div class=panel-group id=accordion-Product><div class="panel panel-success" id=jump-Product-CreateProduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
+&#34;newPassword&#34;: &#34;23456789&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Authentication_Updateuserpassword_0_Updateuserpassword>Update user password</select><br><section id=req_res_Authentication_Updateuserpassword_0_Updateuserpassword style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/auth/updatepassword</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;currentPassword&#34;: &#34;12345678&#34;,
+&#34;newPassword&#34;: &#34;23456789&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZWJlYTlmYzQ4YmU1NmJiYmQ2OGE4OSIsImlhdCI6MTY0Mjg1MTg0MSwiZXhwIjoxNjQzNzE1ODQxfQ.hsJZV3lLwmD9fo2lIXQSMp7JwvbwVdr2MEpKvC-7J7A&#34;
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Product>Product
+<span class=badge>6</span></h3></div><div class=panel-body><p><p>Folder for all product APs<div class=request-item><div class=panel-group id=accordion-Product><div class="panel panel-success" id=jump-Product-CreateProduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-success data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-CreateProduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Create Product</strong> &nbsp;|&nbsp;
 <strong class="request-method border-success">POST</strong>
 &nbsp;
 {{URL}}/api/v1/products</h4></a></div><div id=collapse-Product-CreateProduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Add a product to the database. To create product you have to be either an admin or vendor</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;name&#34;: &#34;Apple smart phone&#34;,
+&#34;name&#34;: &#34;Amazon Echo Dot 3rd Generation&#34;,
 &#34;description&#34;:
-&#34;Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working&#34;,
-&#34;brand&#34;: &#34;Apple&#34;,
+&#34;Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space&#34;,
+&#34;brand&#34;: &#34;Amazon&#34;,
 &#34;category&#34;: &#34;Electronics&#34;,
-&#34;price&#34;: 89.99,
-&#34;countInStock&#34;: 10
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-danger" id=jump-Product-Deleteproduct><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Deleteproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete product</strong> &nbsp;|&nbsp;
+&#34;price&#34;: 29.99,
+&#34;countInStock&#34;: 2
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Product_CreateProduct_0_CreateProduct>Create Product</select><br><section id=req_res_Product_CreateProduct_0_CreateProduct style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;Amazon Echo Dot 3rd Generation&#34;,
+&#34;description&#34;:
+&#34;Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space&#34;,
+&#34;brand&#34;: &#34;Amazon&#34;,
+&#34;category&#34;: &#34;Electronics&#34;,
+&#34;price&#34;: 29.99,
+&#34;countInStock&#34;: 2
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;name&#34;: &#34;Amazon Echo Dot 3rd Generation&#34;,
+&#34;description&#34;: &#34;Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space&#34;,
+&#34;brand&#34;: &#34;Amazon&#34;,
+&#34;category&#34;: &#34;Electronics&#34;,
+&#34;countInStock&#34;: 2,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;_id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:31:12.151Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T11:31:12.151Z&#34;,
+&#34;slug&#34;: &#34;amazon-echo-dot-3rd-generation&#34;,
+&#34;__v&#34;: 0,
+&#34;id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-danger" id=jump-Product-Deleteproduct><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Deleteproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete product</strong> &nbsp;|&nbsp;
 <strong class="request-method border-danger">DELETE</strong>
 &nbsp;
-{{URL}}/api/v1/products/61e5e5303b7a87f590ea222a</h4></a></div><div id=collapse-Product-Deleteproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete product from the database. To delete a product you have to be either an admin or vendor and you have to be the product owner.</small><br><br></div></div></div><div class="panel panel-info" id=jump-Product-Getallproducts><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Getallproducts><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all products</strong> &nbsp;|&nbsp;
+{{URL}}/api/v1/products/61e72dee799d292c0142ef43</h4></a></div><div id=collapse-Product-Deleteproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete product from the database. To delete a product you have to be either an admin or vendor and you have to be the product owner.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Product_Deleteproduct_0_Deleteproduct>Delete product</select><br><section id=req_res_Product_Deleteproduct_0_Deleteproduct style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products/61e72dee799d292c0142ef43</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Product-Getallproducts><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Getallproducts><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all products</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/products</h4></a></div><div id=collapse-Product-Getallproducts class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all products from the database.</small><br><br></div></div></div><div class="panel panel-info" id=jump-Product-Getproduct><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Getproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get product</strong> &nbsp;|&nbsp;
+{{URL}}/api/v1/products</h4></a></div><div id=collapse-Product-Getallproducts class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all products from the database.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Product_Getallproducts_0_Getallproducts>Get all products</select><br><section id=req_res_Product_Getallproducts_0_Getallproducts style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 6,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;,
+&#34;name&#34;: &#34;Amazon Echo Dot 3rd Generation&#34;,
+&#34;description&#34;: &#34;Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space&#34;,
+&#34;brand&#34;: &#34;Amazon&#34;,
+&#34;category&#34;: &#34;Electronics&#34;,
+&#34;countInStock&#34;: 2,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:31:12.151Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:59:37.468Z&#34;,
+&#34;slug&#34;: &#34;amazon-echo-dot-3rd-generation&#34;,
+&#34;__v&#34;: 0,
+&#34;numReviews&#34;: 1,
+&#34;averageRating&#34;: 8,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0dc9a1c85bb9bd395d20&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:59:37.462Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:59:37.462Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;
+},
+{
+&#34;_id&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;,
+&#34;name&#34;: &#34;Sony Playstation 4 Pro White Version&#34;,
+&#34;description&#34;: &#34;The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music&#34;,
+&#34;brand&#34;: &#34;Sony&#34;,
+&#34;category&#34;: &#34;Electronics&#34;,
+&#34;countInStock&#34;: 11,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:30:47.313Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:00:24.624Z&#34;,
+&#34;slug&#34;: &#34;sony-playstation-4-pro-white-version&#34;,
+&#34;__v&#34;: 0,
+&#34;numReviews&#34;: 1,
+&#34;averageRating&#34;: 6,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0df8a1c85bb9bd395d27&#34;,
+&#34;text&#34;: &#34;Great product&#34;,
+&#34;rating&#34;: 6,
+&#34;product&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:00:24.616Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:00:24.616Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;
+},
+{
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;brand&#34;: &#34;Apple&#34;,
+&#34;category&#34;: &#34;Phones &amp; Tablets&#34;,
+&#34;countInStock&#34;: 4,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:30:25.766Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:01:20.249Z&#34;,
+&#34;slug&#34;: &#34;iphone-11-pro-256gb-memory&#34;,
+&#34;__v&#34;: 0,
+&#34;averageRating&#34;: 7,
+&#34;numReviews&#34;: 3,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0c2aa1c85bb9bd395d11&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfddbc48be56bbbd68ab0&#34;,
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0e30a1c85bb9bd395d2e&#34;,
+&#34;text&#34;: &#34;Sleek and classy&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+{
+&#34;_id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;name&#34;: &#34;Logitech G-Series Gaming Mouse&#34;,
+&#34;description&#34;: &#34;Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience&#34;,
+&#34;brand&#34;: &#34;Logitech&#34;,
+&#34;category&#34;: &#34;Electronics&#34;,
+&#34;countInStock&#34;: 7,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61e2c32d48ef63e8bb41bc19&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:23:09.999Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:50:32.160Z&#34;,
+&#34;slug&#34;: &#34;logitech-g-series-gaming-mouse&#34;,
+&#34;__v&#34;: 0,
+&#34;numReviews&#34;: 2,
+&#34;averageRating&#34;: 8,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0ba8a1c85bb9bd395d07&#34;,
+&#34;text&#34;: &#34;The product is fine&#34;,
+&#34;rating&#34;: 7,
+&#34;product&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebffaba1c85bb9bd395ced&#34;,
+&#34;text&#34;: &#34;The product is durable&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;
+},
+{
+&#34;_id&#34;: &#34;61ebe8f4c48be56bbbd68a84&#34;,
+&#34;name&#34;: &#34;Cannon EOS 80D DSLR Camera&#34;,
+&#34;description&#34;: &#34;Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design&#34;,
+&#34;brand&#34;: &#34;Cannon&#34;,
+&#34;category&#34;: &#34;Electronics&#34;,
+&#34;countInStock&#34;: 5,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61e2c32d48ef63e8bb41bc19&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:22:28.748Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T11:22:28.748Z&#34;,
+&#34;slug&#34;: &#34;cannon-eos-80d-dslr-camera&#34;,
+&#34;__v&#34;: 0,
+&#34;reviews&#34;: [],
+&#34;id&#34;: &#34;61ebe8f4c48be56bbbd68a84&#34;
+},
+{
+&#34;_id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;,
+&#34;name&#34;: &#34;Airpods Wireless Bluetooth Headphones&#34;,
+&#34;description&#34;: &#34;Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working&#34;,
+&#34;brand&#34;: &#34;Samsung&#34;,
+&#34;category&#34;: &#34;Phones &amp; Tablets&#34;,
+&#34;countInStock&#34;: 10,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61e2c32d48ef63e8bb41bc19&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:21:27.565Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:02:11.425Z&#34;,
+&#34;slug&#34;: &#34;airpods-wireless-bluetooth-headphones&#34;,
+&#34;__v&#34;: 0,
+&#34;numReviews&#34;: 1,
+&#34;averageRating&#34;: 9,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0e63a1c85bb9bd395d35&#34;,
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Product-Getallproductswithqueryparameters><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Getallproductswithqueryparameters><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all products with query parameters</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/products/61e176e52545bcda5f49a45b</h4></a></div><div id=collapse-Product-Getproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single product from the database.</small><br><br></div></div></div><div class="panel panel-warning" id=jump-Product-Updateproduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
+{{URL}}/api/v1/products</h4></a></div><div id=collapse-Product-Getallproductswithqueryparameters class="panel-collapse collapse"><div class=panel-body><h5 class="label label-info">Query</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>select<td>name,description<td><tr><td>page<td>2<td><tr><td>limit<td>2<td></table><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Product_Getallproductswithqueryparameters_0_Getallproductswithqueryparameters>Get all products with query parameters</select><br><section id=req_res_Product_Getallproductswithqueryparameters_0_Getallproductswithqueryparameters style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products?select=name,description&page=2&limit=2</h5><h5 class="label label-info">Query</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>select<td>name,description<td><tr><td>page<td>2<td><tr><td>limit<td>2<td></table><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 2,
+&#34;pagination&#34;: {
+&#34;next&#34;: {
+&#34;page&#34;: 3,
+&#34;limit&#34;: 2
+},
+&#34;prev&#34;: {
+&#34;page&#34;: 1,
+&#34;limit&#34;: 2
+}
+},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0c2aa1c85bb9bd395d11&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfddbc48be56bbbd68ab0&#34;,
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0e30a1c85bb9bd395d2e&#34;,
+&#34;text&#34;: &#34;Sleek and classy&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+{
+&#34;_id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;name&#34;: &#34;Logitech G-Series Gaming Mouse&#34;,
+&#34;description&#34;: &#34;Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience&#34;,
+&#34;reviews&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0ba8a1c85bb9bd395d07&#34;,
+&#34;text&#34;: &#34;The product is fine&#34;,
+&#34;rating&#34;: 7,
+&#34;product&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebffaba1c85bb9bd395ced&#34;,
+&#34;text&#34;: &#34;The product is durable&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;__v&#34;: 0
+}
+],
+&#34;id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Product-Getproduct><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Getproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get product</strong> &nbsp;|&nbsp;
+<strong class="request-method border-info">GET</strong>
+&nbsp;
+{{URL}}/api/v1/products/61ebead1c48be56bbbd68a8c</h4></a></div><div id=collapse-Product-Getproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single product from the database.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Product_Getproduct_0_Getproduct>Get product</select><br><section id=req_res_Product_Getproduct_0_Getproduct style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products/61ebead1c48be56bbbd68a8c</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;brand&#34;: &#34;Apple&#34;,
+&#34;category&#34;: &#34;Phones &amp; Tablets&#34;,
+&#34;countInStock&#34;: 7,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:30:25.766Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T11:30:25.766Z&#34;,
+&#34;slug&#34;: &#34;iphone-11-pro-256gb-memory&#34;,
+&#34;__v&#34;: 0,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Product-Updateproduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-warning data-toggle=collapse data-parent=#accordion-Product href=#collapse-Product-Updateproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update product</strong> &nbsp;|&nbsp;
 <strong class="request-method border-warning">PUT</strong>
 &nbsp;
-{{URL}}/api/v1/products/61e72dee799d292c0142ef43</h4></a></div><div id=collapse-Product-Updateproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update the product in the database. To update a product you have to be either an admin or vendor and you have to be the product owner.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;name&#34;: &#34;leke product&#34;
-}</span><div class=clearfix></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Review>Review
+{{URL}}/api/v1/products/61ebead1c48be56bbbd68a8c</h4></a></div><div id=collapse-Product-Updateproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update the product in the database. To update a product you have to be either an admin or vendor and you have to be the product owner.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;price&#34;: 250.45,
+&#34;countInStock&#34;: 4
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Product_Updateproduct_0_Updateproduct>Update product</select><br><section id=req_res_Product_Updateproduct_0_Updateproduct style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products/61ebead1c48be56bbbd68a8c</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;price&#34;: 250.45,
+&#34;countInStock&#34;: 4
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;brand&#34;: &#34;Apple&#34;,
+&#34;category&#34;: &#34;Phones &amp; Tablets&#34;,
+&#34;countInStock&#34;: 4,
+&#34;photo&#34;: &#34;no-photo.jpg&#34;,
+&#34;user&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:30:25.766Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T11:41:54.600Z&#34;,
+&#34;slug&#34;: &#34;iphone-11-pro-256gb-memory&#34;,
+&#34;__v&#34;: 0,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=Review>Review
 <span class=badge>6</span></h3></div><div class=panel-body><p><p>Folder for all the reveiw endpoint<div class=request-item><div class=panel-group id=accordion-Review><div class="panel panel-success" id=jump-Review-Addreviewforaproduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-success data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Addreviewforaproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Add review for a product</strong> &nbsp;|&nbsp;
 <strong class="request-method border-success">POST</strong>
 &nbsp;
-{{URL}}/api/v1/products/61e6f634a33a688cff09d946/reviews</h4></a></div><div id=collapse-Review-Addreviewforaproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Create review for a product. To create review you have to be either an admin or user (buyer) and you have to be the review owner</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;text&#34;: &#34;I love the product&#34;,
-&#34;rating&#34;: 5
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-danger" id=jump-Review-Deletereview><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Deletereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete review</strong> &nbsp;|&nbsp;
+{{URL}}/api/v1/products/61ebe8b7c48be56bbbd68a81/reviews</h4></a></div><div id=collapse-Review-Addreviewforaproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Create review for a product. To create review you have to be either an admin or user (buyer) and you have to be the review owner</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Review_Addreviewforaproduct_0_Addreviewforaproduct>Add review for a product</select><br><section id=req_res_Review_Addreviewforaproduct_0_Addreviewforaproduct style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products/61ebe8b7c48be56bbbd68a81/reviews</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;_id&#34;: &#34;61ec0e63a1c85bb9bd395d35&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>201</strong></section></div></div></div><div class="panel panel-danger" id=jump-Review-Deletereview><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Deletereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete review</strong> &nbsp;|&nbsp;
 <strong class="request-method border-danger">DELETE</strong>
 &nbsp;
-{{URL}}/api/v1/reviews/61e6f9eea33a688cff09d94e</h4></a></div><div id=collapse-Review-Deletereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete single review from the database. To delete review you have to be either an admin or user (buyer) and you have to be the review owner.</small><br><br></div></div></div><div class="panel panel-info" id=jump-Review-Getallreviews><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Getallreviews><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all reviews</strong> &nbsp;|&nbsp;
+{{URL}}/api/v1/reviews/61ec0e30a1c85bb9bd395d2e</h4></a></div><div id=collapse-Review-Deletereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete single review from the database. To delete review you have to be either an admin or user (buyer) and you have to be the review owner.</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Review_Deletereview_0_Deletereview>Delete review</select><br><section id=req_res_Review_Deletereview_0_Deletereview style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews/61ec0e30a1c85bb9bd395d2e</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Review-Getallreviews><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Getallreviews><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all reviews</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/reviews</h4></a></div><div id=collapse-Review-Getallreviews class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all reviews from the database</small><br><br></div></div></div><div class="panel panel-info" id=jump-Review-Getreviewsforaproduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
+{{URL}}/api/v1/reviews</h4></a></div><div id=collapse-Review-Getallreviews class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all reviews from the database</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Review_Getallreviews_0_Getallreviews>Get all reviews</select><br><section id=req_res_Review_Getallreviews_0_Getallreviews style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 8,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0e63a1c85bb9bd395d35&#34;,
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;,
+&#34;name&#34;: &#34;Airpods Wireless Bluetooth Headphones&#34;,
+&#34;description&#34;: &#34;Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working&#34;,
+&#34;id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0e30a1c85bb9bd395d2e&#34;,
+&#34;text&#34;: &#34;Sleek and classy&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0df8a1c85bb9bd395d27&#34;,
+&#34;text&#34;: &#34;Great product&#34;,
+&#34;rating&#34;: 6,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;,
+&#34;name&#34;: &#34;Sony Playstation 4 Pro White Version&#34;,
+&#34;description&#34;: &#34;The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music&#34;,
+&#34;id&#34;: &#34;61ebeae7c48be56bbbd68a8f&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:00:24.616Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:00:24.616Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0dc9a1c85bb9bd395d20&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;,
+&#34;name&#34;: &#34;Amazon Echo Dot 3rd Generation&#34;,
+&#34;description&#34;: &#34;Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space&#34;,
+&#34;id&#34;: &#34;61ebeb00c48be56bbbd68a92&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:59:37.462Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:59:37.462Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0c2aa1c85bb9bd395d11&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0ba8a1c85bb9bd395d07&#34;,
+&#34;text&#34;: &#34;The product is fine&#34;,
+&#34;rating&#34;: 7,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;name&#34;: &#34;Logitech G-Series Gaming Mouse&#34;,
+&#34;description&#34;: &#34;Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience&#34;,
+&#34;id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;
+},
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:50:32.148Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebffaba1c85bb9bd395ced&#34;,
+&#34;text&#34;: &#34;The product is durable&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;,
+&#34;name&#34;: &#34;Logitech G-Series Gaming Mouse&#34;,
+&#34;description&#34;: &#34;Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience&#34;,
+&#34;id&#34;: &#34;61ebe91dc48be56bbbd68a87&#34;
+},
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:59:23.402Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfddbc48be56bbbd68ab0&#34;,
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;name&#34;: &#34;iPhone 11 Pro 256GB Memory&#34;,
+&#34;description&#34;: &#34;Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life&#34;,
+&#34;id&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;
+},
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Review-Getreviewsforaproduct><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-info data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Getreviewsforaproduct><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get reviews for a product</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/products/61e6f634a33a688cff09d946/reviews</h4></a></div><div id=collapse-Review-Getreviewsforaproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Fetch reviews for a product from the database.</small><br><br><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+{{URL}}/api/v1/products/61ebead1c48be56bbbd68a8c/reviews</h4></a></div><div id=collapse-Review-Getreviewsforaproduct class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Fetch reviews for a product from the database.</small><br><br><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
 &#34;text&#34;: &#34;I love the product&#34;,
 &#34;rating&#34;: 5
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-info" id=jump-Review-Getsinglereview><div class=panel-heading><small class="pull-right text-muted">raw</small>
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Review_Getreviewsforaproduct_0_Getreviewsforaproduct>Get reviews for a product</select><br><section id=req_res_Review_Getreviewsforaproduct_0_Getreviewsforaproduct style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/products/61ebead1c48be56bbbd68a8c/reviews</h5><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 3,
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0c2aa1c85bb9bd395d11&#34;,
+&#34;text&#34;: &#34;It is working perfectly well&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:52:42.995Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfddbc48be56bbbd68ab0&#34;,
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:51:39.253Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ec0e30a1c85bb9bd395d2e&#34;,
+&#34;text&#34;: &#34;Sleek and classy&#34;,
+&#34;rating&#34;: 8,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-Review-Getsinglereview><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-info data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Getsinglereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single review</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/reviews/61e6f9eea33a688cff09d94e</h4></a></div><div id=collapse-Review-Getsinglereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single review from the database.</small><br><br><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+{{URL}}/api/v1/reviews/61ec0e63a1c85bb9bd395d35</h4></a></div><div id=collapse-Review-Getsinglereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single review from the database.</small><br><br><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
 &#34;text&#34;: &#34;I love the product&#34;,
 &#34;rating&#34;: 5
-}</span><div class=clearfix></div></div></div></div><div class="panel panel-warning" id=jump-Review-Updatereview><div class=panel-heading><small class="pull-right text-muted">raw</small>
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Review_Getsinglereview_0_Getsinglereview>Get single review</select><br><section id=req_res_Review_Getsinglereview_0_Getsinglereview style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews/61ec0e63a1c85bb9bd395d35</h5><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;text&#34;: &#34;I love the product&#34;,
+&#34;rating&#34;: 5
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ec0e63a1c85bb9bd395d35&#34;,
+&#34;text&#34;: &#34;Affordable and elegant&#34;,
+&#34;rating&#34;: 9,
+&#34;product&#34;: {
+&#34;_id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;,
+&#34;name&#34;: &#34;Airpods Wireless Bluetooth Headphones&#34;,
+&#34;description&#34;: &#34;Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working&#34;,
+&#34;id&#34;: &#34;61ebe8b7c48be56bbbd68a81&#34;
+},
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:02:11.420Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-Review-Updatereview><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-warning data-toggle=collapse data-parent=#accordion-Review href=#collapse-Review-Updatereview><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update review</strong> &nbsp;|&nbsp;
 <strong class="request-method border-warning">PUT</strong>
 &nbsp;
-{{URL}}/api/v1/reviews/61e6f9eea33a688cff09d94e</h4></a></div><div id=collapse-Review-Updatereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update single review in the database.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+{{URL}}/api/v1/reviews/61ec0e30a1c85bb9bd395d2e</h4></a></div><div id=collapse-Review-Updatereview class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update single review in the database.</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
 &#34;text&#34;: &#34;I don&#39;t like the product&#34;,
-&#34;rating&#34;: 7
-}</span><div class=clearfix></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=User>User
+&#34;rating&#34;: 2
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_Review_Updatereview_0_Updatereview>Update review</select><br><section id=req_res_Review_Updatereview_0_Updatereview style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/reviews/61ec0e30a1c85bb9bd395d2e</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;text&#34;: &#34;I don&#39;t like the product&#34;,
+&#34;rating&#34;: 2
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ec0e30a1c85bb9bd395d2e&#34;,
+&#34;text&#34;: &#34;I don&#39;t like the product&#34;,
+&#34;rating&#34;: 2,
+&#34;product&#34;: &#34;61ebead1c48be56bbbd68a8c&#34;,
+&#34;user&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T14:01:20.243Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:09:29.440Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 class=panel-title id=User>User
 <span class=badge>4</span></h3></div><div class=panel-body><p><div class=request-item><div class=panel-group id=accordion-User><div class="panel panel-danger" id=jump-User-Deleteuser><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-danger data-toggle=collapse data-parent=#accordion-User href=#collapse-User-Deleteuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Delete user</strong> &nbsp;|&nbsp;
 <strong class="request-method border-danger">DELETE</strong>
 &nbsp;
-{{URL}}/api/v1/users/61e71d4339d8d7faf3c1e92d</h4></a></div><div id=collapse-User-Deleteuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete user from the database (Admin right only)</small><br><br></div></div></div><div class="panel panel-info" id=jump-User-Getallusers><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-User href=#collapse-User-Getallusers><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all users</strong> &nbsp;|&nbsp;
+{{URL}}/api/v1/users/61ebea9fc48be56bbbd68a89</h4></a></div><div id=collapse-User-Deleteuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Delete user from the database (Admin right only)</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_User_Deleteuser_0_Deleteuser>Delete user</select><br><section id=req_res_User_Deleteuser_0_Deleteuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users/61ebea9fc48be56bbbd68a89</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-User-Getallusers><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-User href=#collapse-User-Getallusers><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get all users</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/users</h4></a></div><div id=collapse-User-Getallusers class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all users from the database (admin right only)</small><br><br></div></div></div><div class="panel panel-info" id=jump-User-Getsingleuser><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-User href=#collapse-User-Getsingleuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single user</strong> &nbsp;|&nbsp;
+{{URL}}/api/v1/users</h4></a></div><div id=collapse-User-Getallusers class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get all users from the database (admin right only)</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_User_Getallusers_0_Getallusers>Get all users</select><br><section id=req_res_User_Getallusers_0_Getallusers style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;count&#34;: 6,
+&#34;pagination&#34;: {},
+&#34;data&#34;: [
+{
+&#34;_id&#34;: &#34;61ec0d9ca1c85bb9bd395d1d&#34;,
+&#34;name&#34;: &#34;Cole Mike&#34;,
+&#34;email&#34;: &#34;cole@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T13:58:52.430Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T13:58:52.430Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfcf9c48be56bbbd68aad&#34;,
+&#34;name&#34;: &#34;Bourne Shaye&#34;,
+&#34;email&#34;: &#34;bourne@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:47:53.745Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:47:53.745Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebfcdbc48be56bbbd68aab&#34;,
+&#34;name&#34;: &#34;Mary Shaw&#34;,
+&#34;email&#34;: &#34;mary@gmail.com&#34;,
+&#34;role&#34;: &#34;user&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T12:47:23.142Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T12:47:23.142Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;name&#34;: &#34;David Doe&#34;,
+&#34;email&#34;: &#34;david@gmail.com&#34;,
+&#34;role&#34;: &#34;vendor&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:29:35.639Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T11:44:56.227Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61e71d4339d8d7faf3c1e92d&#34;,
+&#34;name&#34;: &#34;Admin&#34;,
+&#34;email&#34;: &#34;admin@gmail.com&#34;,
+&#34;role&#34;: &#34;admin&#34;,
+&#34;createdAt&#34;: &#34;2022-01-18T20:04:19.138Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-19T21:00:52.129Z&#34;,
+&#34;__v&#34;: 0
+},
+{
+&#34;_id&#34;: &#34;61e2c32d48ef63e8bb41bc19&#34;,
+&#34;name&#34;: &#34;Smith Doe&#34;,
+&#34;email&#34;: &#34;smith@gmail.com&#34;,
+&#34;role&#34;: &#34;vendor&#34;,
+&#34;createdAt&#34;: &#34;2022-01-15T12:50:53.409Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-15T12:50:53.409Z&#34;,
+&#34;__v&#34;: 0
+}
+]
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-info" id=jump-User-Getsingleuser><div class=panel-heading><small class="pull-right text-muted"></small><a class=text-info data-toggle=collapse data-parent=#accordion-User href=#collapse-User-Getsingleuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Get single user</strong> &nbsp;|&nbsp;
 <strong class="request-method border-info">GET</strong>
 &nbsp;
-{{URL}}/api/v1/users/61e71d4339d8d7faf3c1e92d</h4></a></div><div id=collapse-User-Getsingleuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single user from the database (admin right only)</small><br><br></div></div></div><div class="panel panel-warning" id=jump-User-Updateuser><div class=panel-heading><small class="pull-right text-muted">raw</small>
+{{URL}}/api/v1/users/61e71d4339d8d7faf3c1e92d</h4></a></div><div id=collapse-User-Getsingleuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Get single user from the database (admin right only)</small><br><br><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_User_Getsingleuser_0_Getsingleuser>Get single user</select><br><section id=req_res_User_Getsingleuser_0_Getsingleuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users/61e71d4339d8d7faf3c1e92d</h5><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61e71d4339d8d7faf3c1e92d&#34;,
+&#34;name&#34;: &#34;Admin&#34;,
+&#34;email&#34;: &#34;admin@gmail.com&#34;,
+&#34;role&#34;: &#34;admin&#34;,
+&#34;createdAt&#34;: &#34;2022-01-18T20:04:19.138Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-19T21:00:52.129Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div><div class="panel panel-warning" id=jump-User-Updateuser><div class=panel-heading><small class="pull-right text-muted">raw</small>
 <a class=text-warning data-toggle=collapse data-parent=#accordion-User href=#collapse-User-Updateuser><h4 class=panel-title><span class="glyphicon glyphicon-plus"></span><strong>Update user</strong> &nbsp;|&nbsp;
 <strong class="request-method border-warning">PUT</strong>
 &nbsp;
-{{URL}}/api/v1/users/61e71d4339d8d7faf3c1e92d</h4></a></div><div id=collapse-User-Updateuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update user (admin right only)</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
-&#34;name&#34;: &#34;David Doe&#34;
-}</span><div class=clearfix></div></div></div></div></div></div></div></div></div></div></div><script src="./js/index.js"></script><br><br><footer class="navbar-default navbar-fixed-bottom"><div class=container-fluid><div class="span12 text-center"><span data-toggle=tooltip title="If the application help you, please feel free to give a star to the project in github. Your star inspire me to work more on open-source projects like this!">Made with <em class=love-color>&#9829;</em> by <a href=https://github.com/thedevsaddam target=_blank class=text-muted>thedevsaddam</a> | Generated at: 2022-01-19 22:19:22 by <a href=https://github.com/thedevsaddam/docgen target=_blank class=text-muted>docgen</a></span></div></div></footer>
+{{URL}}/api/v1/users/61ebea9fc48be56bbbd68a89</h4></a></div><div id=collapse-User-Updateuser class="panel-collapse collapse"><div class=panel-body><h5 class="label label-default">Description</h5><br><small><p>Update user (admin right only)</small><br><br><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;John Doe&#34;,
+&#34;email&#34;: &#34;john@gmail.com&#34;
+}</span><div class=clearfix></div><select class=resp-selector>
+<option value>Select Example Request/Response
+<option value=req_res_User_Updateuser_0_Updateuser>Update user</select><br><section id=req_res_User_Updateuser_0_Updateuser style=display:none><h4>Example Request</h4><h5>URL: {{URL}}/api/v1/users/61ebea9fc48be56bbbd68a89</h5><h5 class="label label-warning">Headers</h5><table class="table table-hover"><thead><tr><th>Key<th>Value<th>Description<tbody><tr><td>Content-Type<td>application/json<td><p>JSON Type</table><h5 class="label label-primary">Body</h5><span class=resp-prettyprint>{
+&#34;name&#34;: &#34;John Doe&#34;,
+&#34;email&#34;: &#34;john@gmail.com&#34;
+}</span><div class=clearfix></div><h4>Example Response</h4><h5 class="label label-success">Body</h5><span class=resp-prettyprint>{
+&#34;success&#34;: true,
+&#34;data&#34;: {
+&#34;_id&#34;: &#34;61ebea9fc48be56bbbd68a89&#34;,
+&#34;name&#34;: &#34;John Doe&#34;,
+&#34;email&#34;: &#34;john@gmail.com&#34;,
+&#34;role&#34;: &#34;vendor&#34;,
+&#34;createdAt&#34;: &#34;2022-01-22T11:29:35.639Z&#34;,
+&#34;updatedAt&#34;: &#34;2022-01-22T14:14:35.390Z&#34;,
+&#34;__v&#34;: 0
+}
+}</span><div class=clearfix></div><h5 class="label label-info">Code:</h5><strong>200</strong></section></div></div></div></div></div></div></div></div></div></div><script src="./js/index.js"></script><br><br><footer class="navbar-default navbar-fixed-bottom"><div class=container-fluid><div class="span12 text-center"><span data-toggle=tooltip title="If the application help you, please feel free to give a star to the project in github. Your star inspire me to work more on open-source projects like this!">Made with <em class=love-color>&#9829;</em> by <a href=https://github.com/thedevsaddam target=_blank class=text-muted>thedevsaddam</a> | Generated at: 2022-01-22 15:40:57 by <a href=https://github.com/thedevsaddam/docgen target=_blank class=text-muted>docgen</a></span></div></div></footer>
