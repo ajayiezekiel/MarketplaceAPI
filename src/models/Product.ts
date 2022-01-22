@@ -93,7 +93,7 @@ ProductSchema.virtual('reviews', {
     localField: '_id',
     foreignField: 'product',
     justOne: false
-})
+});
 
 
 
