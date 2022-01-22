@@ -20,7 +20,8 @@ const ReviewSchema = new mongoose.Schema<Review>({
     rating: {
         type: Number,
         min: [1, 'It cannot be less than one'],
-        max: [10, 'It cannnot be more than ten']
+        max: [10, 'It cannnot be more than ten'],
+        required: [true, 'Please provide a rating']
     },
     product: {
         type: mongoose.Schema.Types.ObjectId,
@@ -62,6 +63,35 @@ ReviewSchema.statics.getAverageRating = async function(productId) {
     }
 };
 
+// Static method to get average rating and save
+ReviewSchema.statics.getReviewCount = async function(productId) {
+    const obj = await this.aggregate([
+        {
+            $match: { product: productId }
+        },
+        {
+            $group: {
+                _id: '$product',
+                numReviews: { $count: {} }
+            }
+        }
+    ]); 
+    
+    try {
+        await Product.findByIdAndUpdate(productId, {
+            numReviews: obj[0].numReviews
+        });
+    } catch(err) {
+        console.error(err);
+    }
+};
+
+
+// Execute getReviewCount after save
+ReviewSchema.post('save', function() {
+    this.constructor.getReviewCount(this.product);
+});
+
 // Execute getAverageRating after save
 ReviewSchema.post('save', function() {
     this.constructor.getAverageRating(this.product);
@@ -72,6 +102,9 @@ ReviewSchema.pre('remove', function() {
     this.constructor.getAverageRating(this.product);
 });
 
-
+// Execute getReviewCount before remove
+ReviewSchema.pre('remove', function() {
+    this.constructor.getReviewCount(this.product);
+});
 
 export default mongoose.model<Review>('Review', ReviewSchema);
